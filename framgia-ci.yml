@@ -1,0 +1,15 @@
+project_type: php
+build:
+  general_test:
+    image: framgiaciteam/laravel-workspace:latest
+test:
+  phpcs:
+    ignore: false
+    command: echo '' | phpcs --standard=Framgia --report-checkstyle=.framgia-ci-reports/phpcs.xml app
+deploy:
+  deployer:
+    image: framgiaciteam/deployer:2.0
+    when:
+      branch: develop
+    #run: php deployer.phar deploy development -vvv
+    run: php deployer.phar ssh -vvv
