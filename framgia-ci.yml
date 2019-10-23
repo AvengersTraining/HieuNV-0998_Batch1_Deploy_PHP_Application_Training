@@ -12,3 +12,9 @@ deploy:
     when:
       branch: develop
     run: source deploy.sh
+
+  rocketeer:
+    image: framgiaciteam/deployer:2.0
+    when:
+      branch: develop
+    run: php rocketeer.phar deploy --on=development --no-interaction
